@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- http://stackoverflow.com/questions/481808/how-can-i-provide-a-custom-log4j-xml-for-different-ant-tasks-->
+
+ 
+<configuration>
+  <appenders>
+   <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d %-5p (%F:%L) - %m (%C{2} - [%t])%n"/>
+    </Console>
+  </appenders>
+  <loggers>
+  	<logger name="org.apache.log4j.xml" level="info">
+  		<appender-ref ref="STDOUT"/>
+  	</logger>
+	
+    <logger name="com.kontos" level="all" additivity="false">
+    	<appender-ref ref="STDOUT"/>
+    <!-- <appender-ref ref="FILEOUT"/> -->	
+    </logger>
+    <logger name="org.springframework" level="info" additivity="false">
+         	<appender-ref ref="STDOUT"/>
+    <!-- <appender-ref ref="FILEOUT"/> -->	
+    </logger>
+    <root level="debug">
+     <appender-ref ref="STDOUT"/>
+<!-- <appender-ref ref="FILEOUT"/> -->     
+    </root>
+  </loggers>
+</configuration>
